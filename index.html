@@ -3,115 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HookPilot</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <title>HookPilot — TikTok Content Optimization</title>
+  <style>
+    body{font-family:Inter,Arial,sans-serif;max-width:920px;margin:2rem auto;padding:0 1rem;line-height:1.6}
+    .card{border:1px solid #e5e7eb;border-radius:12px;padding:1rem;margin:1rem 0}
+    a{color:#1d4ed8}
+  </style>
 </head>
 <body>
-  <header>
-    <h1>HookPilot</h1>
-    <p>Sellable MVP: accounts, draft generation, queue workflow, billing scaffold.</p>
-  </header>
+  <h1>HookPilot</h1>
+  <p>HookPilot helps creators and businesses plan, generate, and optimize TikTok content with draft generation, video variants, and performance insights.</p>
 
-  <main>
-    <section class="card" id="authCard">
-      <h2>Account</h2>
-      <form id="registerForm" class="grid">
-        <input id="regName" placeholder="Name" />
-        <input id="regEmail" type="email" placeholder="Email" required />
-        <input id="regPassword" type="password" placeholder="Password (min 8)" required />
-        <button type="submit">Create Account</button>
-      </form>
-      <form id="loginForm" class="grid top-gap">
-        <input id="loginEmail" type="email" placeholder="Email" required />
-        <input id="loginPassword" type="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
-      <div id="authInfo" class="meta"></div>
-      <button id="logoutBtn" class="top-gap hidden">Logout</button>
-    </section>
+  <div class="card">
+    <h2>What HookPilot does</h2>
+    <ul>
+      <li>Generates hooks, scripts, captions, and hashtag sets</li>
+      <li>Creates short-form video variants from user-provided footage</li>
+      <li>Analyzes post performance to improve future recommendations</li>
+    </ul>
+  </div>
 
-    <section class="card" id="billingCard">
-      <h2>Plans</h2>
-      <div id="plans"></div>
-    </section>
+  <div class="card">
+    <h2>Legal & Contact</h2>
+    <p><a href="/Hookpilot-site/privacy.html">Privacy Policy</a></p>
+    <p><a href="/Hookpilot-site/terms.html">Terms of Service</a></p>
+    <p>Support: <a href="mailto:support@hookpilot.app">support@hookpilot.app</a></p>
+  </div>
 
-    <section class="card">
-      <h2>TikTok Connection (Scaffold)</h2>
-      <form id="connectTikTokForm" class="grid">
-        <input id="tiktokHandle" placeholder="TikTok handle (e.g., @yourbrand)" required />
-        <input id="tiktokAccessToken" placeholder="Access token (optional for scaffold)" />
-        <input id="tiktokRefreshToken" placeholder="Refresh token (optional for scaffold)" />
-        <button type="submit">Connect TikTok</button>
-      </form>
-      <button id="disconnectTikTokBtn" class="top-gap" type="button">Disconnect TikTok</button>
-      <div id="tiktokStatus" class="top-gap meta"></div>
-    </section>
-
-    <section class="card">
-      <h2>Niche Finder + Brain Recommendations</h2>
-      <button id="loadNichesBtn" type="button">Find Best Niches</button>
-      <div id="niches" class="top-gap"></div>
-      <button id="loadBrainBtn" type="button" class="top-gap">Load Performance Recommendations</button>
-      <div id="brain" class="top-gap"></div>
-    </section>
-
-    <section class="card">
-      <h2>Log TikTok Post Performance (teaches the app brain)</h2>
-      <form id="insightForm" class="grid">
-        <input id="postUrl" placeholder="TikTok post URL (optional)" />
-        <input id="insightNiche" placeholder="Niche (e.g., creator education)" required />
-        <input id="hookType" placeholder="Hook type (e.g., list, contrarian)" required />
-        <input id="insightStyle" placeholder="Style (e.g., bold, clean, viral)" required />
-        <input id="views" type="number" min="0" placeholder="Views" required />
-        <input id="watchTimeSec" type="number" min="0" step="0.1" placeholder="Avg watch time (sec)" required />
-        <input id="completionRate" type="number" min="0" max="100" step="0.1" placeholder="Completion rate %" required />
-        <input id="shares" type="number" min="0" placeholder="Shares" value="0" />
-        <input id="saves" type="number" min="0" placeholder="Saves" value="0" />
-        <input id="comments" type="number" min="0" placeholder="Comments" value="0" />
-        <button type="submit">Save Performance</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>Generate Draft Queue</h2>
-      <form id="generatorForm" class="grid">
-        <input id="topic" placeholder="Topic (e.g., content planning)" required />
-        <input id="audience" placeholder="Audience (e.g., coaches)" required />
-        <input id="offer" placeholder="Offer (e.g., HookPilot app)" required />
-        <input id="cta" placeholder="CTA (e.g., Comment 'pilot' for early access)" required />
-        <input id="tone" placeholder="Tone (e.g., chill, direct)" value="chill" />
-        <input id="count" type="number" min="1" max="50" value="10" />
-        <button type="submit">Generate Drafts</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>Auto Video Creator (from your footage)</h2>
-      <form id="videoForm" class="grid" enctype="multipart/form-data">
-        <input id="videoTitle" placeholder="Video title (optional)" />
-        <input id="hookText" placeholder="Hook text on screen (first 1-2 seconds)" required />
-        <input id="ctaText" placeholder="CTA text (e.g., Follow for Part 2)" value="Follow for Part 2" />
-        <select id="style">
-          <option value="bold">Bold</option>
-          <option value="clean">Clean</option>
-          <option value="viral">Viral</option>
-        </select>
-        <input id="variants" type="number" min="1" max="3" value="2" />
-        <input id="clips" type="file" accept="video/*" multiple required />
-        <button type="submit">Create Viral Variants</button>
-      </form>
-      <div class="meta">Tip: upload 2-10 clips. We create vertical video + overlay hook/CTA and optional A/B variants.</div>
-      <section id="videos" class="draft-list top-gap"></section>
-    </section>
-
-    <section class="card row-between">
-      <h2>Draft Queue</h2>
-      <a id="exportLink" href="#">Export CSV</a>
-    </section>
-
-    <section id="drafts" class="draft-list"></section>
-  </main>
-
-  <script src="/app.js"></script>
+  <p><small>Last updated: 2026-03-25</small></p>
 </body>
 </html>
